@@ -1,37 +1,45 @@
-gamer = {'name': input('Как вас зовут?\n'),
-         'age': int(input('Сколько тебе лет?\n')),
-         'sex': '',
-         'pet_name': '',
+import sys
+alphabet = 'абвгдеёжзиӣклмнопрстуфхцчшщэьъыюя'
+
+
+gamer = {'name': input('Как вас зовут? '),
+         'age': int(input('Сколько тебе лет? ')),
+         'sex': input('Твой пол: '),
+         'pet_name': input('Имя твоего питомца: '),
          }
 
+boolvar = bool(input("Тебе нравится играть? "))
 if gamer['age'] < 18:
-    if gamer['name'] == 'Вася':
-        print(gamer['name'], 'тубу нельзя играть, потому что ты Вася и молодой')
-    else:
         print('Тебе нельзя играть')
-elif gamer['name'] == 'Петя':
-    print('Ты плохой')
+        print('Удачи ', gamer['name'])
+elif gamer['age'] >= 90:
+        a = input("Ты точно хочешь играть? Это может тебя утомить (N/Y): ")
+        if a == 'Y':
+            b = input("Точно? (N/Y): ")
+            if b == 'Y':
+                print('Добро пожаловать в Игру ',gamer['name'])
+                namelowercase = gamer['name'].lower()
+                for char in alphabet:
+                    if char not in namelowercase:
+                        print(char)
+
+            elif b == 'N':
+                print('Удачи ', gamer['name'])
+                sys.exit(0)
+            else:
+                sys.exit(0)
+
+        elif a == 'N':
+            print('Удачи ', gamer['name'])
+            sys.exit(0)
+        else:
+            sys.exit(0)
+
+
+
 else:
-    print('Добро пожаловать в Игру')
-
-print('Я могу сосчитать твой возраст')
-
-i = 0
-while i <= gamer['age']:
-    print(i)
-    i += 1
-
-    if i > 22:
-        print('замучился считать')
-        break
-else:
-    print('Сработал else в цикле')
-
-print('А еще я могу произнести имя по буквам')
-
-i = 0
-for char in gamer['name']:
-    i += 1
-    if i == 3:
-        continue
-    print(char)
+    print('Добро пожаловать в Игру',gamer['name'])
+    namelowercase = gamer['name'].lower()
+    for char in alphabet:
+        if char not in namelowercase:
+           print(char)
